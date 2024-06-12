@@ -1,0 +1,59 @@
+package com.example.Medico.services;
+
+import com.example.Medico.dtos.ConsultaDTO;
+import com.example.Medico.models.Consulta;
+import com.example.Medico.repository.ConsultaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+public class ConsultaService {
+
+    @Autowired
+    private ConsultaRepository consultaRepository;
+
+    public List<ConsultaDTO> findAll() {
+        return consultaRepository.findAll().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public Optional<ConsultaDTO> findById(Long id) {
+        return consultaRepository.findById(id)
+                .map(this::convertToDTO);
+    }
+
+    public ConsultaDTO save(ConsultaDTO consultaDTO) {
+        Consulta consulta = convertToEntity(consultaDTO);
+        return convertToDTO(consultaRepository.save(consulta));
+    }
+
+    public void deleteById(Long id) {
+        consultaRepository.deleteById(id);
+    }
+
+    private ConsultaDTO convertToDTO(Consulta consulta) {
+        ConsultaDTO consultaDTO = new ConsultaDTO();
+        consultaDTO.setId(consulta.getId());
+        consultaDTO.setPacienteId(consulta.getPacienteId());
+        consultaDTO.setMedicoId(consulta.getMedicoId());
+        consultaDTO.setDataHora(consulta.getDataHora());
+        consultaDTO.setDescricao(consulta.getDescricao());
+        return consultaDTO;
+    }
+
+    private Consulta convertToEntity(ConsultaDTO consultaDTO) {
+        Consulta consulta = new Consulta();
+        consulta.setId(consultaDTO.getId());
+        consulta.setPacienteId(consultaDTO.getPacienteId());
+        consulta.setMedicoId(consultaDTO.getMedicoId());
+        consulta.setDataHora(consultaDTO.getDataHora());
+        consulta.setDescricao(consultaDTO.getDescricao());
+        return consulta;
+    }
+
+}
