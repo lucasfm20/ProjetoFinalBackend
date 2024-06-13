@@ -4,18 +4,37 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import java.time.LocalDateTime;
 
 @Entity
 public class Diagnostico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long consultaId;
+
+    @NotNull
+    private Long pacienteId;
+
+    @NotNull
+    private Long medicoId;
+
+    @NotNull
+    @FutureOrPresent
+    private LocalDateTime dataHora;
+
+    @NotNull
+    @Size(min = 10, max = 500)
     private String descricao;
 
-    public Diagnostico(Long id, Long consultaId, String descricao) {
+    public Diagnostico(Long id, Long pacienteId, Long medicoId, LocalDateTime dataHora, String descricao) {
         this.id = id;
-        this.consultaId = consultaId;
+        this.pacienteId = pacienteId;
+        this.medicoId = medicoId;
+        this.dataHora = dataHora;
         this.descricao = descricao;
     }
 
@@ -30,12 +49,28 @@ public class Diagnostico {
         this.id = id;
     }
 
-    public Long getConsultaId() {
-        return consultaId;
+    public Long getPacienteId() {
+        return pacienteId;
     }
 
-    public void setConsultaId(Long consultaId) {
-        this.consultaId = consultaId;
+    public void setPacienteId(Long pacienteId) {
+        this.pacienteId = pacienteId;
+    }
+
+    public Long getMedicoId() {
+        return medicoId;
+    }
+
+    public void setMedicoId(Long medicoId) {
+        this.medicoId = medicoId;
+    }
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
 
     public String getDescricao() {
