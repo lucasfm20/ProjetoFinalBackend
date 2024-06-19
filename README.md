@@ -8,9 +8,9 @@ Get: /consultas/id
 Delete: /consultas/id
 
 Post : /consultas 
-'''json
+```json
 "pacienteId": int,
 "medicoId": int,
 "dataHora": "date",
 "descricao": "string"
-'''
+```
