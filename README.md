@@ -1,11 +1,11 @@
-Documentação da Api.
+# Documentação da Api.
 
-Ajuda:
+## Ajuda:
 
 Get: /ajuda
 
 
-Consulta:
+## Consulta:
 
 Get: /consultas/id
 
@@ -24,7 +24,7 @@ Post : /consultas
 ]
 ```
 
-Diagnostico:
+## Diagnostico:
 
 Get: /diagnosticos/id
 
@@ -43,7 +43,7 @@ Post : /diagnosticos
 ]
 ```
 
-Medico:
+## Medico:
 
 Get: /medicos/id
 
@@ -61,7 +61,7 @@ Post : /medicos
 ]
 ```
 
-Paciente:
+## Paciente:
 
 Get: /pacientes/id
 
@@ -79,7 +79,7 @@ Post : /pacientes
 ]
 ```
 
-Tratamento:
+## Tratamento:
 
 Get: /tratamentos/id
 
