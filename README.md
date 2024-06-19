@@ -14,8 +14,8 @@ Post : /consultas
 {
 "pacienteId": Long,
 "medicoId": Long,
-"dataHora": "date",
-"descricao": "string"
+"dataHora": date,
+"descricao": string
 }
 ]
 ```
