@@ -8,7 +8,7 @@ Get: /consultas/id
 Delete: /consultas/id
 
 Post : /consultas 
-'''json
+'''javascript
 {
 "pacienteId": int,
 "medicoId": int,
