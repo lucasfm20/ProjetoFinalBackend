@@ -29,6 +29,7 @@ public class MedicoController {
         return medico.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @PostMapping
     public ResponseEntity<?> save(@Valid @RequestBody MedicoDTO medicoDTO, BindingResult result) {
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().body(result.getAllErrors());
