@@ -35,6 +35,23 @@ public class PacienteService {
         pacienteRepository.deleteById(id);
     }
 
+
+    public Optional<PacienteDTO> update(Long id, PacienteDTO pacienteDTO) {
+        return pacienteRepository.findById(id).map(existingPaciente -> {
+            if (pacienteDTO.getNome() != null) {
+                existingPaciente.setNome(pacienteDTO.getNome());
+            }
+            if (pacienteDTO.getDataDeNascimento() != null) {
+                existingPaciente.setDataDeNascimento(pacienteDTO.getDataDeNascimento());
+            }
+            if (pacienteDTO.getContato() != null) {
+                existingPaciente.setContato(pacienteDTO.getContato());
+            }
+            Paciente update =pacienteRepository.save(existingPaciente);
+            return convertToDTO(update);
+        });
+    }
+
     private PacienteDTO convertToDTO(Paciente paciente) {
         PacienteDTO pacienteDTO = new PacienteDTO();
         pacienteDTO.setId(paciente.getId());
