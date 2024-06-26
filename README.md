@@ -6,10 +6,10 @@ O propósito do projeto é, por meio de API’s, gerenciar um sistema de consult
 
 ### Casos de Uso
 
-1 - Cadastro e gerenciamento de pacientes \**
-2 - Agendamento e gerenciamento de consultas \**
-3 - Diagnostico de pacientes \**
-4 - Planejamento e gerenciamento de tratamentos \**
+1 - Cadastro e gerenciamento de pacientes \
+2 - Agendamento e gerenciamento de consultas \
+3 - Diagnostico de pacientes \
+4 - Planejamento e gerenciamento de tratamentos \
 5 - Gestão de médicos
 
 ## Ajuda:
