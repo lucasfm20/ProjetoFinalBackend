@@ -1,5 +1,17 @@
 # Documentação da Api.
 
+## Gestão Médica
+
+O propósito do projeto é, por meio de API’s, gerenciar um sistema de consultas, diagnosticos e tratamentos de vários pacientes com os seus respectivos médicos.
+
+### Casos de Uso
+
+1 - Cadastro e gerenciamento de pacientes
+2 - Agendamento e gerenciamento de consultas
+3 - Diagnostico de pacientes
+4 - Planejamento e gerenciamento de tratamentos
+5 - Gestão de médicos
+
 ## Ajuda:
 
 Get: /ajuda
