@@ -15,17 +15,17 @@ public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+    @NotNull(message = "O id do paciente é obrigatório")
     private Long pacienteId;
 
-    @NotNull
+    @NotNull(message = "O id do médico é obrigatório")
     private Long medicoId;
-    @NotNull
+    @NotNull(message = "A data da consulta é obrigatória")
     @FutureOrPresent
     private LocalDateTime dataHora;
 
-    @NotNull
-    @Size(min = 10, max = 500)
+    @NotNull(message = "A descrição da consulta é obrigatoria")
+    @Size(min = 10, max = 500, message = "A descrição da consulta deve ter entre 10 e 500 caracteres")
     private String descricao;
 
     public Consulta(Long id, Long pacienteId, Long medicoId, LocalDateTime dataHora, String descricao) {
