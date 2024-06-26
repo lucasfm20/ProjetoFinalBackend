@@ -79,6 +79,8 @@ Get: /pacientes/id
 
 Delete: /pacientes/id
 
+Patch: /pacientes/id
+
 Post : /pacientes
 
 ```json
