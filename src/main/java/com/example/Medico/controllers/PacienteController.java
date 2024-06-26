@@ -1,9 +1,13 @@
 package com.example.Medico.controllers;
 
+import com.example.Medico.dtos.ConsultaDTO;
 import com.example.Medico.dtos.PacienteDTO;
 import com.example.Medico.services.PacienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +23,10 @@ public class PacienteController {
     private PacienteService pacienteService;
 
     @GetMapping
-    public List<PacienteDTO> findAll() {
-        return pacienteService.findAll();
+    public Page<PacienteDTO> findAll(@RequestParam(defaultValue = "0") int page,
+                                     @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return pacienteService.findAll(pageable);
     }
 
     @GetMapping("/{id}")

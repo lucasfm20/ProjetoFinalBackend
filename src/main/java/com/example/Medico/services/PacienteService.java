@@ -1,9 +1,12 @@
 package com.example.Medico.services;
 
+import com.example.Medico.dtos.ConsultaDTO;
 import com.example.Medico.dtos.PacienteDTO;
 import com.example.Medico.models.Paciente;
 import com.example.Medico.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,10 +18,9 @@ public class PacienteService {
     @Autowired
     private PacienteRepository pacienteRepository;
 
-    public List<PacienteDTO> findAll() {
-        return pacienteRepository.findAll().stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
+    public Page<PacienteDTO> findAll(Pageable pageable) {
+        return pacienteRepository.findAll(pageable)
+                .map(this::convertToDTO);
     }
 
     public Optional<PacienteDTO> findById(Long id) {

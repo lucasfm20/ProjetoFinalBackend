@@ -4,6 +4,9 @@ import com.example.Medico.dtos.ConsultaDTO;
 import com.example.Medico.models.Consulta;
 import com.example.Medico.repository.ConsultaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +19,9 @@ public class ConsultaService {
     @Autowired
     private ConsultaRepository consultaRepository;
 
-    public List<ConsultaDTO> findAll() {
-        return consultaRepository.findAll().stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
+    public Page<ConsultaDTO> findAll(Pageable pageable) {
+        return consultaRepository.findAll(pageable)
+                .map(this::convertToDTO);
     }
 
     public Optional<ConsultaDTO> findById(Long id) {
